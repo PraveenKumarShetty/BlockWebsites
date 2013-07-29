@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# update hosts file
+
+if [ "$(whoami)" != "root" ]; then
+  echo "Sorry, Please run as root. type:  sudo -s"
+	exit 1
+fi
+
+
+
+if [ -z $1 ]; then
+echo "Please Provide Your website"
+exit 1
+fi
+
+searchString=".com"
+
+if `echo $1 | grep "${searchString}" 1>/dev/null 2>&1`
+then
+  echo  "127.0.0.1 "$1 >> /etc/hosts
+else
+  echo "Please provide a valid domain name eg: ./blockweb www.example.com"
+fi 
+
+
+
+
+
